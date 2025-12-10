@@ -1,0 +1,44 @@
+# This is a Databricks asset bundle definition for dab_walkthrough (Single Node version).
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+#
+# This is a sanitized version ready for Git repository deployment.
+# Replace workspace host with your actual Databricks workspace URL or use environment variables.
+
+bundle:
+  name: dab_walkthrough_single_node
+  # UUID can be regenerated with: databricks bundle init
+  uuid: 2a94df5e-ce6b-421f-9c52-45e48864e4ff
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+
+artifacts:
+  python_artifact:
+    type: whl
+    build: uv build --wheel
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+
+targets:
+  dev:
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    mode: development
+    default: true
+    workspace:
+      # Replace with your Databricks workspace URL or use environment variable:
+      host: ${env.DATABRICKS_HOST}
+      # Use your Databricks CLI profile name, or remove to use default
+      # profile: DEV
+    variables:
+      catalog: catalog1
+      schema: default
+

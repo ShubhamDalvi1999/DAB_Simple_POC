@@ -1,0 +1,52 @@
+# Delta table preview job (spark_python_task)
+
+resources:
+  jobs:
+    delta_sample_job:
+      name: delta_sample_job
+
+      job_clusters:
+        - job_cluster_key: single_node_cluster
+          new_cluster:
+            spark_version: 17.3.x-scala2.13
+            node_type_id: Standard_D4ds_v4
+            num_workers: 0
+            data_security_mode: SINGLE_USER
+            runtime_engine: STANDARD
+            spark_env_vars:
+              PYSPARK_PYTHON: /databricks/python3/bin/python3
+            spark_conf:
+              spark.databricks.cluster.profile: singleNode
+              spark.master: local[*]
+            custom_tags:
+              ResourceClass: SingleNode
+
+      tasks:
+        - task_key: create_delta_table
+          job_cluster_key: single_node_cluster
+          spark_python_task:
+            python_file: ../src/delta_sample_job/create_delta_table.py
+            parameters:
+              - "--catalog"
+              - "${var.catalog}"
+              - "--schema"
+              - "${var.schema}"
+              - "--table"
+              - "taxi_trips_delta"
+        
+        - task_key: read_delta
+          depends_on:
+            - task_key: create_delta_table
+          job_cluster_key: single_node_cluster
+          spark_python_task:
+            python_file: ../src/delta_sample_job/read_delta.py
+            parameters:
+              - "--catalog"
+              - "${var.catalog}"
+              - "--schema"
+              - "${var.schema}"
+              - "--table"
+              - "taxi_trips_delta"
+              - "--limit"
+              - "5"
+

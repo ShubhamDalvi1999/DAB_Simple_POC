@@ -1,0 +1,18 @@
+# NYC Taxi Data Pipeline (Serverless DLT - Medallion Architecture)
+
+resources:
+  pipelines:
+    taxi_data_pipeline:
+      name: taxi_data_pipeline
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      root_path: "../src/taxi_data_pipeline"
+
+      libraries:
+        - glob:
+            include: ../src/taxi_data_pipeline/transformations/**
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}
+
