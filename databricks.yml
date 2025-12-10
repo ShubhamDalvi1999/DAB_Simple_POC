@@ -5,7 +5,7 @@
 # Replace workspace host with your actual Databricks workspace URL or use environment variables.
 
 bundle:
-  name: dab_walkthrough_single_node
+  name: poc_dab_walkthrough_single_node
   # UUID can be regenerated with: databricks bundle init
   uuid: 2a94df5e-ce6b-421f-9c52-45e48864e4ff
 

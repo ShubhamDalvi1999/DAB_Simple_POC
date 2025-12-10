@@ -1,6 +1,6 @@
 from databricks.sdk.runtime import spark
 from pyspark.sql import DataFrame
-from dab_walkthrough import taxis
+from poc_dab_walkthrough import taxis
 
 
 def test_find_all_taxis():

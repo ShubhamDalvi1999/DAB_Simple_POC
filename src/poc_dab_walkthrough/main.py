@@ -1,6 +1,6 @@
 import argparse
 from databricks.sdk.runtime import spark
-from dab_walkthrough import taxis
+from poc_dab_walkthrough import taxis
 
 
 def main():

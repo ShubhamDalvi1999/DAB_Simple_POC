@@ -1,9 +1,9 @@
-# The main pipeline for dab_walkthrough (Serverless DLT version)
+# The main pipeline for poc_dab_walkthrough (Serverless DLT version)
 
 resources:
   pipelines:
-    dab_walkthrough_etl_single_node:
-      name: dab_walkthrough_etl_single_node
+    poc_dab_walkthrough_etl_single_node:
+      name: poc_dab_walkthrough_etl_single_node
       catalog: ${var.catalog}
       schema: ${var.schema}
       serverless: true

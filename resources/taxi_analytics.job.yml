@@ -2,8 +2,8 @@
 
 resources:
   jobs:
-    taxi_analytics_job:
-      name: taxi_analytics_job
+    poc_taxi_analytics_job:
+      name: poc_taxi_analytics_job
 
       trigger:
         # Run this job every day
@@ -48,7 +48,7 @@ resources:
             - task_key: run_taxi_analysis
           job_cluster_key: single_node_cluster
           python_wheel_task:
-            package_name: dab_walkthrough
+            package_name: poc_dab_walkthrough
             entry_point: main
             parameters:
               - "--catalog"
@@ -62,5 +62,5 @@ resources:
           depends_on:
             - task_key: run_taxi_analysis
           pipeline_task:
-            pipeline_id: ${resources.pipelines.taxi_data_pipeline.id}
+            pipeline_id: ${resources.pipelines.poc_taxi_data_pipeline.id}
 

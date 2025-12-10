@@ -1,7 +1,9 @@
 [project]
-name = "dab_walkthrough"
+# Update the project name to match your actual project name
+name = "poc_dab_walkthrough"
 version = "0.0.1"
-authors = [{ name = "dshubhamp1999@gmail.com" }]
+# Update with your email or organization name for your environment
+authors = [{ name = "your-email@example.com" }]
 requires-python = ">=3.10,<3.13"
 dependencies = [
     # Any dependencies for jobs and pipelines in this project can be added here
@@ -19,7 +21,11 @@ dev = [
 ]
 
 [project.scripts]
-main = "dab_walkthrough.main:main"
+# Update the entry point to match your package name under src/
+# Format: {package_directory_name}.{module_name}:{function_name}
+# Example: If your package is in src/my_package/main.py with a main() function,
+#          change to: main = "my_package.main:main"
+main = "poc_dab_walkthrough.main:main"
 
 [build-system]
 requires = ["hatchling"]

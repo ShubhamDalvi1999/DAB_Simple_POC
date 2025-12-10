@@ -2,8 +2,8 @@
 
 resources:
   jobs:
-    delta_sample_job:
-      name: delta_sample_job
+    poc_delta_sample_job:
+      name: poc_delta_sample_job
 
       job_clusters:
         - job_cluster_key: single_node_cluster

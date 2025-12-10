@@ -2,8 +2,8 @@
 
 resources:
   pipelines:
-    taxi_data_pipeline:
-      name: taxi_data_pipeline
+    poc_taxi_data_pipeline:
+      name: poc_taxi_data_pipeline
       catalog: ${var.catalog}
       schema: ${var.schema}
       serverless: true
