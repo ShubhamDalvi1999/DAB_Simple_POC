@@ -33,11 +33,12 @@ targets:
     # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
     mode: development
     default: true
-    workspace:
-      # Replace with your Databricks workspace URL or use environment variable:
-      host: ${env.DATABRICKS_HOST}
-      # Use your Databricks CLI profile name, or remove to use default
-      # profile: DEV
+    # When deploying from within Databricks workspace, omit the workspace section
+    # When deploying from local CLI, uncomment and set the workspace host:
+    # workspace:
+    #   host: ${env.DATABRICKS_HOST}
+    #   # Or use a Databricks CLI profile:
+    #   # profile: DEV
     variables:
       catalog: catalog1
       schema: default
